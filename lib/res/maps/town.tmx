@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="18" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="day" tilewidth="16" tileheight="16">
+  <image source="../tilesets/day.png" width="976" height="1360"/>
+ </tileset>
+ <tileset firstgid="5186" name="triggers" tilewidth="16" tileheight="16">
+  <image source="../tilesets/triggers.png" width="48" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="ice" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="base" width="200" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztmsEuBDEcxtvuaS7ccPcA9iUQB87O+wAeAnFEQoQMzg77JkgkEryAw76F/ySz2W5pO53+2zGT75f80lnT1Ip+vunGVAgxI6eR41E9lkW8HO8nZAT9Ifd+4FpzTE7I22LZsvj9NZfV/JzZmIX9ekDH6H+LU406XHtsUhuah7/ygf4ANq6kENcJvZHL349rj7nyEZIZ9Adw8SYXey2F70Y+UvZHmy5BfwAXufORoz9w/gBcDKk/bPvf9xr9AWwMuT9s98xnMvQHsDGE/oh5xkJ/ABd6Ps7p+oLBS/k/+qPJcxf6A7jQ8/FM1y8Mvjrykfv84Tt7oD+ACz0f20qIHQZ3Vd7+aHMGwfkDNCF3Psy9ck/3HwwfZZr+sJ3Pq/VS/w+BPoL+0HV/rNHcdcMN1f780TQv+jzfZwxjz/1QQX/ouj/uaO7BSIj90WIsVfjnVzEiH8CGno9j2pcnEZ6Re+RpQH980NxP8rC2uv5S/meU+fpP5Kbsh5wZg3lcVWnXXzHWt/VAW79F9/se+YBcmv2xJePsUz5if1Y4XOf8AIt/FjQ=
+  </data>
+ </layer>
+ <layer name="triggers" width="200" height="18" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1k0OhCAMQGEPwYmI9z+TcWHiPwVKKfq+hMWMLpxMnxDDNMWfL+CJ9pzN4bhiuH73tugDnmjPWG4P9AHPLPrIaYY+4EnLPkr2EvqAJxb7B31gVNZ9nK/ffaYPeGHZx9O1GOgDPrXoI7WHcL6CBosZsNw/JOcu+oCU1n/ntY/zvT3aoI9xjdrHWyOpfugDUqP2UXq2og/k+EIf0l7299X8HvxHzRxI35Et+mj9PqcPrDTmrLSP3GfQembLBaRoz0zvmacPaOo9oyyWx7VZAP5ppLo=
+  </data>
+ </layer>
+ <objectgroup name="objects" visible="0">
+  <object x="114" y="242" width="13" height="13">
+   <properties>
+    <property name="exit" value="livingspace.tmx"/>
+   </properties>
+  </object>
+  <object x="112" y="256" width="16" height="16">
+   <properties>
+    <property name="entry" value="livingspace.tmx"/>
+    <property name="facing" value="down"/>
+   </properties>
+  </object>
+  <object x="96" y="240" width="15" height="15">
+   <properties>
+    <property name="exit" value="boxes.tmx"/>
+   </properties>
+  </object>
+  <object x="96" y="256" width="16" height="16">
+   <properties>
+    <property name="entry" value="boxes.tmx"/>
+    <property name="facing" value="down"/>
+   </properties>
+  </object>
+  <object x="288" y="16" width="15" height="15">
+   <properties>
+    <property name="action" value="ice-sign"/>
+   </properties>
+  </object>
+  <object x="721" y="208" width="15" height="15">
+   <properties>
+    <property name="action" value="winner-sign"/>
+   </properties>
+  </object>
+  <object x="721" y="224" width="15" height="15">
+   <properties>
+    <property name="action" value="credits-sign"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

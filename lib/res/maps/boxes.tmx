@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="9" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="day" tilewidth="16" tileheight="16">
+  <image source="../tilesets/day.png" width="976" height="1360"/>
+ </tileset>
+ <tileset firstgid="5186" name="triggers" tilewidth="16" tileheight="16">
+  <image source="../tilesets/triggers.png" width="48" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="box" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="base" width="10" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAe2BHAI0GdARZ1yCCCGYLRAQCy3Q45
+  </data>
+ </layer>
+ <layer name="triggers" width="10" height="9" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxzEmFgcCISEwIjQR2yOL4wQhcHACIcCxc=
+  </data>
+ </layer>
+ <layer name="boxes" width="10" height="9" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAtcBYhXZ6QnqEIAPHIAQY=
+  </data>
+ </layer>
+ <objectgroup name="objects" visible="0">
+  <object x="64" y="112" width="16" height="16">
+   <properties>
+    <property name="entry" value="town.tmx"/>
+    <property name="facing" value="up"/>
+   </properties>
+  </object>
+  <object x="65" y="129" width="31" height="15">
+   <properties>
+    <property name="exit" value="town.tmx"/>
+   </properties>
+  </object>
+  <object x="97" y="113" width="14" height="14">
+   <properties>
+    <property name="action" value="boxes-sign"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

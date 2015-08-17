@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="11" height="9" tilewidth="16" tileheight="16" backgroundcolor="#000000">
+ <tileset firstgid="1" name="day" tilewidth="16" tileheight="16">
+  <image source="../tilesets/day.png" width="976" height="1360"/>
+ </tileset>
+ <tileset firstgid="5186" name="triggers" tilewidth="16" tileheight="16">
+  <image source="../tilesets/triggers.png" width="48" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="entry" value="bedroom.tmx"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="playerStart" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="base" width="11" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAdYANidiBuAGJOIGYEYlcozQzELUhq64C4Hoj3QtXaIeHvQHwQSS2yHAcaH4axqWWE0vZA/BWIv0HZMOCCw6wdQLwTzVxaAABrzg4d
+  </data>
+ </layer>
+ <layer name="triggers" width="11" height="9" visible="0" opacity="0.73">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAMOIkgMDHqsOlB5mMzi5AcIfuwqcVmPzEAm1vxYVIAAMiQDG8=
+  </data>
+ </layer>
+ <objectgroup name="objects" visible="0">
+  <object name="fromBedroom" x="96" y="48" width="16" height="16">
+   <properties>
+    <property name="entry" value="bedroom.tmx"/>
+    <property name="facing" value="down"/>
+   </properties>
+  </object>
+  <object name="toBedroom" x="96" y="16" width="16" height="16">
+   <properties>
+    <property name="exit" value="bedroom.tmx"/>
+   </properties>
+  </object>
+  <object name="toTown" x="0" y="97" width="16" height="16">
+   <properties>
+    <property name="exit" value="town.tmx"/>
+   </properties>
+  </object>
+  <object name="fromTown" x="32" y="96" width="16" height="16">
+   <properties>
+    <property name="entry" value="town.tmx"/>
+    <property name="facing" value="right"/>
+   </properties>
+  </object>
+  <object x="130" y="50" width="13" height="13">
+   <properties>
+    <property name="action" value="home-television"/>
+   </properties>
+  </object>
+  <object name="toTown" x="16" y="113" width="16" height="16">
+   <properties>
+    <property name="exit" value="town.tmx"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
