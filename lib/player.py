@@ -51,7 +51,7 @@ class Player(pygame.sprite.Sprite):
             box_rect = all_boxes[colliding_boxes[0]].rect
             box_facing = box_rect.move(*move_dict[self.orient])
             colliding_boxes = box_facing.collidelistall(
-                [sprite.rect for sprite in game.boxes.sprites()])
+                [sprite.rect for sprite in all_boxes])
             colliding_solids = game.tilemap.layers['triggers'].collide(
                 box_facing, 'solid')
             if len(colliding_boxes) < 2 and len(colliding_solids) < 1:
