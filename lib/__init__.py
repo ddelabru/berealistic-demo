@@ -6,7 +6,7 @@
 import sys
 import os.path
 
-__version__ = '0.1'
+__version__ = '0.2'
 
 frozen = getattr(sys, 'frozen', False)
 

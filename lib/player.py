@@ -42,12 +42,23 @@ class Player(pygame.sprite.Sprite):
                game.tilemap.layers['triggers'].collide(facing_rect, 'solid')
                ) > 0:
             return False
+        all_boxes = game.boxes.sprites()
         colliding_boxes = facing_rect.collidelistall(
-            [sprite.rect for sprite in game.boxes.sprites()])
+            [sprite.rect for sprite in all_boxes])
         if len(colliding_boxes) > 0:
             move_dict = {'up': (0, -2), 'down': (0, 2), 'left': (-2, 0),
                          'right': (2, 0)}
-            return False
+            box_rect = all_boxes[colliding_boxes[0]].rect
+            box_facing = box_rect.move(*move_dict[self.orient])
+            colliding_boxes = box_facing.collidelistall(
+                [sprite.rect for sprite in game.boxes.sprites()])
+            colliding_solids = game.tilemap.layers['triggers'].collide(
+                box_facing, 'solid')
+            if len(colliding_boxes) < 2 and len(colliding_solids) < 1:
+                all_boxes[colliding_boxes[0]].rect = box_facing
+                return True
+            else:
+                return False
         else:
             return True
 

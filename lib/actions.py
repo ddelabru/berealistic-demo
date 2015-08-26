@@ -4,8 +4,8 @@
 # Copyright (c) 2015 Dominic Delabruere
 
 def boxes_sign(game):
-    game.display_message('You\'ll be able to push these boxes around a couple '
-                        'git commits from now.')
+    game.display_message('You can push these boxes around, but they aren\'t '
+                        'part of a cool puzzle yet.')
 
 def computer(game):
     game.display_message('Lots o\' cat pictures...')
