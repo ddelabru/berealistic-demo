@@ -34,7 +34,7 @@ class Game(object):
         pygame.mouse.set_visible(False)
 
     def bgm_loop(self, filename):
-        if pygame.mixer and (not pygame.mixer.get_busy()):
+        if pygame.mixer:
             pygame.mixer.music.load(find_res('bgm/' + filename))
             pygame.mixer.music.play(-1)
 
@@ -219,18 +219,19 @@ class Game(object):
     def main(self):
         clock = pygame.time.Clock()
         self.initArea('bedroom.tmx', 'wakeup')
+        self.bgm_loop('81691-past.xm')
         
         self.tilemap.update(clock.tick(30), self)
         self.screen.fill((0, 0, 0))
         self.tilemap.draw(self.screen)
-        
-        self.display_message('Hit the SPACEBAR when you\'re done reading a '
-                             'message, or to interact with an object you\'re '
-                             'facing.')
-        self.display_message('Move around with the ARROW KEYS.')
-        self.display_message('Toggle fullscreen with the F KEY.')
 
         try:
+            self.display_message('Hit the SPACEBAR when you\'re done reading '
+                                 'a message, or to interact with an object '
+                                 'you\'re facing.')
+            self.display_message('Move around with the ARROW KEYS.')
+            self.display_message('Toggle fullscreen with the F KEY.')
+            
             while True:
                 dt = clock.tick(30)
 

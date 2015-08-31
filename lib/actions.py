@@ -13,6 +13,7 @@ def computer(game):
 def credits_sign(game):
     game.display_message('Based on the pylletTown demo by Renfred Harper.')
     game.display_message('Sound effects by Little Robot Sound Factory.')
+    game.display_message('Music by modarchive.org user JAM.')
     game.display_message('Tilemaps created using Tiled.')
     game.display_message('Tile graphics and sprites are non-free placeholder '
                         'art.')
