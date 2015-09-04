@@ -24,4 +24,9 @@ Running the demo from source
 To run the demo from source, you'll need Python and pygame installed. The demo
 is written for compatibility with both Python 2.7 and Python 3. When you have
 Python and pygame installed, simply run `python main.py` in the top directory
-of the demo
+of the demo.
+
+Running the Windows executable version of the demo
+--------------------------------------------------
+To run the Windows executable version of the demo, simply extract the zip file
+and run `main.exe` in the top directory.
