@@ -66,8 +66,8 @@ class Game(object):
 
         font = RegularFont()
 
-        # Split text into lists of word-wrapped strings:
-        text = font.word_wrap(text)
+        # Split text into lists of word-wrapped strings, 25 characters long
+        text = font.word_wrap(text, 25)
 
         while True:
 
