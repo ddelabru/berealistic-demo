@@ -19,9 +19,10 @@ class Menu(pygame.Surface):
         self.game = game
         total_width = 0
         for option_text in menu_options:
-            option_text_width = self.font.size(option_text)[0] + 8
+            option_text_width = self.font.size(option_text)[0]
             if option_text_width > total_width:
                 total_width = option_text_width
+        total_width += 8
         total_height = (self.font.get_linesize() * len(menu_options)) + 10
         super(Menu, self).__init__((total_width, total_height))
 
@@ -54,7 +55,7 @@ class Menu(pygame.Surface):
         for index in range(len(self.menu_options)):
             if index == self.selection_index:
                 self.font.set_underline(True)
-            self.blit(self.font.render(self.menu_options[index]), (5, y_pos))
+            self.blit(self.font.render(self.menu_options[index]), (4, y_pos))
             y_pos += self.font.get_linesize()
             self.font.set_underline(False)
         return self
