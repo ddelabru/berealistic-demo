@@ -12,6 +12,7 @@ from . import find_res
 from . import tmx
 from .player import Player
 from .font import RegularFont
+from .menu import Menu
 from .parse import parse_options
 from .spriteloop import SpriteLoop
 from .slidingbox import SlidingBox
@@ -30,7 +31,7 @@ class Game(object):
             self.realScreen = pygame.display.set_mode((480, 432))
         else:
             self.realScreen = None
-            self.toggleFullscreen()
+            self.toggle_fullscreen()
         pygame.mouse.set_visible(False)
 
     def bgm_loop(self, filename):
@@ -178,7 +179,7 @@ class Game(object):
 
             self.needs_flip = False
 
-    def toggleFullscreen(self):
+    def toggle_fullscreen(self):
         if self.realScreen and abs(
                 self.realScreen.get_flags() & pygame.FULLSCREEN):
             pygame.display.quit()
@@ -202,14 +203,18 @@ class Game(object):
         self.needs_flip = True
         self.resized = True
 
+    def confirm_quit(self):
+        if Menu.no_or_yes('Are you sure you want to quit?', self):
+            raise QuitGameException
+
     def check_meta_keys(self, event):
         if event.type == pygame.QUIT:
             raise QuitGameException
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            raise QuitGameException
+            Menu.show_main_menu(self)
         if event.type == pygame.KEYDOWN and (
                 event.key == pygame.K_f or event.key == pygame.K_F11):
-            self.toggleFullscreen()
+            self.toggle_fullscreen()
         if event.type == pygame.VIDEORESIZE:
             self.realScreen = pygame.display.set_mode(
                 event.dict['size'], pygame.RESIZABLE)
@@ -230,7 +235,7 @@ class Game(object):
                                  'a message, or to interact with an object '
                                  'you\'re facing.')
             self.display_message('Move around with the ARROW KEYS.')
-            self.display_message('Toggle fullscreen with the F KEY.')
+            self.display_message('Launch the game menu with the ESCAPE key.')
             
             while True:
                 dt = clock.tick(30)
