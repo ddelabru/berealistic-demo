@@ -210,8 +210,6 @@ class Game(object):
     def check_meta_keys(self, event):
         if event.type == pygame.QUIT:
             raise QuitGameException
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            Menu.show_main_menu(self)
         if event.type == pygame.KEYDOWN and (
                 event.key == pygame.K_f or event.key == pygame.K_F11):
             self.toggle_fullscreen()
@@ -241,6 +239,8 @@ class Game(object):
                 dt = clock.tick(30)
 
                 for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                        Menu.show_main_menu(self)
                     self.check_meta_keys(event)
 
                 self.tilemap.update(dt, self)
