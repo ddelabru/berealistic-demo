@@ -105,7 +105,7 @@ class Menu(pygame.Surface):
     @classmethod
     def yes_or_no(cls, question, game):
         menu = cls(['Yes', 'No'], game)
-        game.display_message(question)
+        game.display_message(question, wait=False)
         choice = menu.get_choice_index()
         if choice == 0:
             return True
@@ -115,7 +115,7 @@ class Menu(pygame.Surface):
     @classmethod
     def no_or_yes(cls, question, game):
         menu = cls(['No', 'Yes'], game)
-        game.display_message(question)
+        game.display_message(question, wait=False)
         choice = menu.get_choice_index()
         if choice == 1:
             return True

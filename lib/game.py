@@ -63,7 +63,7 @@ class Game(object):
         self.needs_flip = True
         self.flip()
 
-    def display_message(self, text):
+    def display_message(self, text, wait=True):
 
         font = RegularFont()
 
@@ -86,7 +86,9 @@ class Game(object):
             spaceDown = False
             spaceUp = False
 
-            while True:
+            text = text[3:]
+
+            while text or wait:
                 clock = pygame.time.Clock()
                 clock.tick(30)
                 self.flip()
@@ -105,8 +107,6 @@ class Game(object):
 
                 if spaceUp:
                     break
-
-            text = text[3:]
 
             if not text:
                 self.needs_flip = True
