@@ -62,6 +62,19 @@ class Player(pygame.sprite.Sprite):
         else:
             return True
 
+    def get_facing_rect(self):
+        facing_rect = self.rect.copy()
+        # Walking at 2 pixels per frame in the direction the player is facing
+        if self.orient == 'up':
+            facing_rect.y -= 2
+        elif self.orient == 'down':
+            facing_rect.y += 2
+        elif self.orient == 'left':
+            facing_rect.x -= 2
+        elif self.orient == 'right':
+            facing_rect.x += 2
+        return facing_rect
+
     def update(self, dt, game):
         key = pygame.key.get_pressed()
         # Setting orientation and sprite based on key input:
@@ -99,16 +112,7 @@ class Player(pygame.sprite.Sprite):
         # Walking mode enabled if a button is held for 0.1 seconds
         if self.holdTime >= 100:
             self.walking = True
-        facing_rect = self.rect.copy()
-        # Walking at 2 pixels per frame in the direction the player is facing
-        if self.orient == 'up':
-            facing_rect.y -= 2
-        elif self.orient == 'down':
-            facing_rect.y += 2
-        elif self.orient == 'left':
-            facing_rect.x -= 2
-        elif self.orient == 'right':
-            facing_rect.x += 2
+        facing_rect = self.get_facing_rect()
         if self.walking and self.dx < 16:
             self.dx += 2
         if self.walking and (self.dx <= 16):
@@ -138,22 +142,21 @@ class Player(pygame.sprite.Sprite):
                      'ice')) == 0:
                 self.image.scroll(-16, 0)
                 self.step = 'leftFoot'
-        # Action detection:
-        if (not self.walking) and key[pygame.K_SPACE]:
-            colliding_actions = game.tilemap.layers['objects'].collide(
-                facing_rect, 'action')
-            if len(colliding_actions) > 0:
-                action_name = colliding_actions[0]['action']
-                actions[action_name](game)
         # After traversing 16 pixels, the walking animation is done
-        if self.dx >= 16 and ((len(game.tilemap.layers['triggers'].collide(
-                                   self.rect, 'ice')) == 0) or len(
-
-            game.tilemap.layers['triggers'].collide(facing_rect, 'solid')) >
-                0):
+        if self.dx >= 16 and (len(game.tilemap.layers['triggers'].collide(
+                self.rect, 'ice')) == 0 or len(
+                game.tilemap.layers['triggers'].collide(
+                facing_rect, 'solid')) > 0):
             self.walking = False
             self.set_sprite()
             self.dx = 0
             game.needs_flip = True
 
         game.tilemap.set_focus(self.rect.x, self.rect.y)
+
+    def action(self, game):
+        colliding_actions = game.tilemap.layers['objects'].collide(
+            self.get_facing_rect(), 'action')
+        if len(colliding_actions) > 0:
+            action_name = colliding_actions[0]['action']
+            actions[action_name](game)

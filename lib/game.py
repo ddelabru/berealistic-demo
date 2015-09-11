@@ -83,30 +83,23 @@ class Game(object):
             self.screen.blit(textBackground, (0, 104))
             self.needs_flip = True
 
-            spaceDown = False
-            spaceUp = False
+            space_pressed = False
 
             text = text[3:]
 
-            while text or wait:
+            while (text or wait) and not space_pressed:
                 clock = pygame.time.Clock()
                 clock.tick(30)
                 self.flip()
 
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and (
-                            event.key == pygame.K_SPACE):
-                        spaceDown = True
-                    elif event.type == pygame.KEYUP and (
-                            event.key == pygame.K_SPACE):
-                        if spaceDown:
-                            spaceUp = True
+                            event.key == pygame.K_SPACE or
+                            event.key == pygame.K_RETURN):
+                        space_pressed = True
                         break
                     else:
                         self.check_meta_keys(event)
-
-                if spaceUp:
-                    break
 
             if not text:
                 self.needs_flip = True
@@ -241,6 +234,10 @@ class Game(object):
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                         Menu.show_main_menu(self)
+                    if event.type == pygame.KEYDOWN and (
+                            event.key == pygame.K_SPACE or
+                            event.key == pygame.K_RETURN):
+                        self.player.action(self)
                     self.check_meta_keys(event)
 
                 self.tilemap.update(dt, self)
