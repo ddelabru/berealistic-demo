@@ -96,7 +96,7 @@ class Menu(pygame.Surface):
 
             for event in pygame.event.get():
                 self.game.check_meta_keys(event)                    
-                if event.type == pygame.KEYUP and (
+                if event.type == pygame.KEYDOWN and (
                         event.key == pygame.K_SPACE or
                         event.key == pygame.K_RETURN):
                             self.game.needs_flip = True
